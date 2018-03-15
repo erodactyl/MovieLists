@@ -9,8 +9,7 @@ export default StackNavigator({
     navigationOptions: { title: "Genres List" }
   },
   MoviesList: {
-    screen: MoviesList,
-    navigationOptions: { title: "Movies List" }
+    screen: MoviesList
   },
   MovieDetails: {
     screen: MovieDetails,
