@@ -35,6 +35,11 @@ class ApiService {
   getMovieUrl = id => {
     return this.getUrl(`movie/${id}`);
   };
+  getMoviesSearchUrl = (query, page) => {
+    return encodeURI(
+      this.getUrl("search/movie", { query, include_adult: false, page })
+    );
+  };
 }
 
 export default new ApiService();

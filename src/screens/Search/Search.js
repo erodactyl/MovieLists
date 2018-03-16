@@ -8,11 +8,10 @@ import PersonDetails from "./PersonDetails";
 export default StackNavigator({
   SearchScreen: {
     screen: SearchScreen,
-    navigationOptions: { title: "Search Screen" }
+    navigationOptions: { header: null, title: "Search" }
   },
   MoviesList: {
-    screen: MoviesList,
-    navigationOptions: { title: "Movies List" }
+    screen: MoviesList
   },
   PeoplesList: {
     screen: PeoplesList,
