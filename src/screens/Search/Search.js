@@ -18,8 +18,7 @@ export default StackNavigator({
     navigationOptions: { title: "Peoples List" }
   },
   MovieDetails: {
-    screen: MovieDetails,
-    navigationOptions: { title: "Movie Details" }
+    screen: MovieDetails
   },
   PersonDetails: {
     screen: PersonDetails,
