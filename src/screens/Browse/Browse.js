@@ -1,8 +1,6 @@
 import { StackNavigator } from "react-navigation";
 import GenresList from "./GenresList";
-import MoviesList from "../Shared/MoviesList";
-import MovieDetails from "../Shared/MovieDetails";
-import PersonDetails from "../Shared/PersonDetails";
+import { MoviesList, MovieDetails, PersonDetails } from "../Shared";
 
 export default StackNavigator({
   GenresList: {

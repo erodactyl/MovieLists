@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
-import PersonSummary from "../../components/PersonSummary";
-import InfiniteScroll from "../../components/InfiniteScroll";
+import { PersonSummary, InfiniteScroll } from "../../components";
 
 export default class PeoplesList extends PureComponent {
   static navigationOptions = ({ navigation }) => {

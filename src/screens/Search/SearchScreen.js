@@ -1,15 +1,7 @@
 import React, { PureComponent } from "react";
 import { StyleSheet } from "react-native";
-import {
-  Container,
-  Text,
-  Button,
-  Header,
-  Icon,
-  Input,
-  Item
-} from "native-base";
-import MoviesService from "../../api/movies.service";
+import { Container, Text, Button, Icon, Input, Item } from "native-base";
+import { MoviesService } from "../../api";
 
 export default class SearchScreen extends PureComponent {
   state = { searchText: "" };

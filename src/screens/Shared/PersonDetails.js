@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { Container, Text } from "native-base";
-import MoviesService from "../../api/movies.service";
+import { MoviesService } from "../../api";
 
 export default class PersonDetails extends PureComponent {
   static navigationOptions = ({ navigation }) => {

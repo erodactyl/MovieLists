@@ -1,8 +1,9 @@
 import React, { PureComponent, Fragment } from "react";
-import { Image, FlatList, TouchableOpacity } from "react-native";
-import { Card, CardItem, Text, Left, Body, ListItem, List } from "native-base";
-import PersonSummary from "../components/PersonSummary";
-import ApiService from "../api/api.service";
+import { Image, TouchableOpacity } from "react-native";
+import { Card, CardItem, Text, Body, List } from "native-base";
+import { PersonSummary } from "../components";
+
+import { ApiService } from "../api";
 
 export default class MovieSummary extends PureComponent {
   render() {

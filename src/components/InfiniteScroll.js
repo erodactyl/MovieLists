@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import { FlatList } from "react-native";
 import { List, ListItem } from "native-base";
 import Container from "./LoadingContainer";
 

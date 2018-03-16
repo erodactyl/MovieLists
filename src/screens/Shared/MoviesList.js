@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
-import MovieSummary from "../../components/MovieSummary";
-import InfiniteScroll from "../../components/InfiniteScroll";
+import { MovieSummary, InfiniteScroll } from "../../components";
 
 export default class MoviesList extends PureComponent {
   static navigationOptions = ({ navigation }) => {
