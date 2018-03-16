@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { Container, Text } from "native-base";
+import MoviesService from "../../api/movies.service";
 
 export default class PersonDetails extends PureComponent {
   static navigationOptions = ({ navigation }) => {
@@ -9,8 +10,13 @@ export default class PersonDetails extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      fullyLoaded: false,
       person: props.navigation.state.params.person
     };
+  }
+  async componentWillMount() {
+    const person = await MoviesService.getPerson(this.state.person.id);
+    this.setState({ person, fullyLoaded: true });
   }
   render() {
     return (

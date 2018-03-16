@@ -18,7 +18,6 @@ export default class MovieDetails extends PureComponent {
   }
   async componentWillMount() {
     const movie = await MoviesService.getMovie(this.state.movie.id);
-    console.log(movie);
     this.setState({ movie, fullyLoaded: true });
   }
   render() {

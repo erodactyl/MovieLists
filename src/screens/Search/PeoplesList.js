@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { List, ListItem, Text, Button, Content } from "native-base";
 import Container from "../../components/LoadingContainer";
+import PersonSummary from "../../components/PersonSummary";
 
 export default class PeoplesList extends PureComponent {
   static navigationOptions = ({ navigation }) => {
@@ -49,7 +50,7 @@ export default class PeoplesList extends PureComponent {
               onPress={() => this.openPerson(person)}
               key={person.id}
             >
-              <Text>{person.name}</Text>
+              <PersonSummary person={person} />
             </ListItem>
           ))}
         </Content>

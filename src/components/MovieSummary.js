@@ -37,12 +37,14 @@ export default class MovieSummary extends PureComponent {
             )}
           </Body>
         </CardItem>
-        <CardItem>
-          <Image
-            style={{ height: 500, flex: 1 }}
-            source={{ uri: ApiService.getPosterUrl(movie.poster_path) }}
-          />
-        </CardItem>
+        {movie.poster_path !== null && (
+          <CardItem>
+            <Image
+              style={{ height: 500, flex: 1 }}
+              source={{ uri: ApiService.getPosterUrl(movie.poster_path) }}
+            />
+          </CardItem>
+        )}
         <CardItem>
           <Text>{overview}</Text>
         </CardItem>

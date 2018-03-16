@@ -43,6 +43,9 @@ class ApiService {
   getPeopleSearchUrl = (query, page) => {
     return this.getUrl("search/person", { query, include_adult: false, page });
   };
+  getPersonUrl = id => {
+    return this.getUrl(`person/${id}`);
+  };
 }
 
 export default new ApiService();

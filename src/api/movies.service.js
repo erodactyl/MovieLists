@@ -17,6 +17,7 @@ class MoviesService {
     this.request(ApiService.getMoviesSearchUrl(query, page));
   getPeoplseSearch = (query, page) =>
     this.request(ApiService.getPeopleSearchUrl(query, page));
+  getPerson = id => this.request(ApiService.getPersonUrl(id));
 }
 
 export default new MoviesService();
