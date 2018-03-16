@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { Text, List, Content, ListItem } from "native-base";
 import { Container } from "../../components";
+
 import { MoviesService } from "../../api";
 
 export default class GenresList extends PureComponent {

@@ -2,6 +2,8 @@ import React, { PureComponent, Fragment } from "react";
 import { Image, TouchableOpacity } from "react-native";
 import { Card, CardItem, Text, Body, List } from "native-base";
 import { MovieSummary } from "../components";
+import styles from "./styles";
+
 import { ApiService } from "../api";
 
 export default class PersonSummary extends PureComponent {
@@ -27,10 +29,10 @@ export default class PersonSummary extends PureComponent {
             )}
           </Body>
         </CardItem>
-        {person.profile_path !== null && (
+        {person.profile_path && (
           <CardItem>
             <Image
-              style={{ height: 500, width: asCast ? 200 : null, flex: 1 }}
+              style={[styles.image, { width: asCast ? 200 : null }]}
               source={{ uri: ApiService.getPosterUrl(person.profile_path) }}
             />
           </CardItem>
@@ -50,7 +52,7 @@ export default class PersonSummary extends PureComponent {
                   onPress={() => this.props.openMovie(movie)}
                   key={movie.id}
                 >
-                  <MovieSummary movie={movie} />
+                  <MovieSummary movie={movie} fromPerson />
                 </TouchableOpacity>
               )}
               horizontal

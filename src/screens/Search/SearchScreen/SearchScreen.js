@@ -1,7 +1,10 @@
 import React, { PureComponent } from "react";
-import { StyleSheet } from "react-native";
+import { View } from "react-native";
 import { Container, Text, Button, Icon, Input, Item } from "native-base";
-import { MoviesService } from "../../api";
+import { DismissKeyboard } from "../../../components";
+import styles from "./styles";
+
+import { MoviesService } from "../../../api";
 
 export default class SearchScreen extends PureComponent {
   state = { searchText: "" };
@@ -32,20 +35,22 @@ export default class SearchScreen extends PureComponent {
   };
   render() {
     return (
-      <Container style={{ flex: 1, justifyContent: "center" }}>
-        <Item rounded style={{ marginBottom: 40 }}>
-          <Icon name="md-search" />
-          <Input placeholder="Search" onChangeText={this.onSearchChange} />
-        </Item>
-        <Item style={{ justifyContent: "space-around" }}>
-          <Button onPress={this.searchMovies}>
-            <Text>Search Movies</Text>
-          </Button>
-          <Button onPress={this.searchPeople}>
-            <Text>Search People</Text>
-          </Button>
-        </Item>
-      </Container>
+      <DismissKeyboard>
+        <Container style={styles.container}>
+          <Item rounded style={styles.searchBar}>
+            <Icon name="md-search" />
+            <Input placeholder="Search" onChangeText={this.onSearchChange} />
+          </Item>
+          <View style={styles.searchButtons}>
+            <Button onPress={this.searchMovies}>
+              <Text>Search Movies</Text>
+            </Button>
+            <Button onPress={this.searchPeople}>
+              <Text>Search People</Text>
+            </Button>
+          </View>
+        </Container>
+      </DismissKeyboard>
     );
   }
 }

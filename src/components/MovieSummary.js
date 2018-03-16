@@ -2,16 +2,13 @@ import React, { PureComponent, Fragment } from "react";
 import { Image, TouchableOpacity } from "react-native";
 import { Card, CardItem, Text, Body, List } from "native-base";
 import { PersonSummary } from "../components";
+import styles from "./styles";
 
 import { ApiService } from "../api";
 
 export default class MovieSummary extends PureComponent {
   render() {
-    const { movie, brief, full } = this.props;
-    const overview =
-      brief && movie.overview.length > 100
-        ? `${movie.overview.substring(0, 100)}...`
-        : movie.overview;
+    const { movie, brief, full, fromPerson } = this.props;
     return (
       <Card>
         <CardItem header>
@@ -44,14 +41,20 @@ export default class MovieSummary extends PureComponent {
         {movie.poster_path !== null && (
           <CardItem>
             <Image
-              style={{ height: 500, flex: 1 }}
+              style={[styles.image, { width: fromPerson ? 200 : null }]}
               source={{ uri: ApiService.getPosterUrl(movie.poster_path) }}
             />
           </CardItem>
         )}
-        <CardItem>
-          <Text>{overview}</Text>
-        </CardItem>
+        {movie.overview && (
+          <CardItem>
+            <Text>
+              {brief && movie.overview.length > 100
+                ? `${movie.overview.substring(0, 100)}...`
+                : movie.overview}
+            </Text>
+          </CardItem>
+        )}
         {full && (
           <CardItem>
             <List
