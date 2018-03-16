@@ -19,6 +19,7 @@ class MoviesService {
     this.request(ApiService.getPeopleSearchUrl(query, page));
   getPerson = id => this.request(ApiService.getPersonUrl(id));
   getMovieCredits = id => this.request(ApiService.getMovieCreditsUrl(id));
+  getPersonCredits = id => this.request(ApiService.getPersonCreditsUrl(id));
 }
 
 export default new MoviesService();

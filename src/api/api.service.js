@@ -30,6 +30,7 @@ class ApiService {
     this.getUrl("search/person", { query, include_adult: false, page });
   getPersonUrl = id => this.getUrl(`person/${id}`);
   getMovieCreditsUrl = id => this.getUrl(`movie/${id}/credits`);
+  getPersonCreditsUrl = id => this.getUrl(`person/${id}/credits`);
 }
 
 export default new ApiService();

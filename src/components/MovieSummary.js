@@ -29,7 +29,9 @@ export default class MovieSummary extends PureComponent {
         <CardItem>
           <Body>
             <Text note>Release Date: {movie.release_date}</Text>
-            <Text note>Popularity: {movie.popularity}</Text>
+            {movie.popularity && (
+              <Text note>Popularity: {movie.popularity}</Text>
+            )}
             {this.props.full && (
               <Fragment>
                 <Text note>Budget: {movie.budget}</Text>
