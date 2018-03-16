@@ -32,6 +32,9 @@ class ApiService {
   getPosterUrl = route => {
     return `${this.protocol}//image.tmdb.org/t/p/w500${route}`;
   };
+  getMovieUrl = id => {
+    return this.getUrl(`movie/${id}`);
+  };
 }
 
 export default new ApiService();

@@ -12,7 +12,6 @@ export default StackNavigator({
     screen: MoviesList
   },
   MovieDetails: {
-    screen: MovieDetails,
-    navigationOptions: { title: "Movie Details" }
+    screen: MovieDetails
   }
 });

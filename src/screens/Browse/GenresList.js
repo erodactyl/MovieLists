@@ -29,7 +29,11 @@ export default class GenresList extends PureComponent {
         <Content>
           <List>
             {this.state.genres.map(genre => (
-              <ListItem key={genre.id} onPress={() => this.selectGenre(genre)}>
+              <ListItem
+                key={genre.id}
+                button
+                onPress={() => this.selectGenre(genre)}
+              >
                 <Text>{genre.name}</Text>
               </ListItem>
             ))}

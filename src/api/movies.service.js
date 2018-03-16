@@ -12,7 +12,7 @@ class MoviesService {
   getAllGenres = () => this.request(ApiService.getAllGenresUrl());
   getMoviesOfGenre = (id, page) =>
     this.request(ApiService.getMoviesOfGenreUrl(id, page));
-  getPoster = route => this.request(ApiService.getPosterUrl());
+  getMovie = id => this.request(ApiService.getMovieUrl(id));
 }
 
 export default new MoviesService();
