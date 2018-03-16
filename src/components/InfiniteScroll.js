@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { List, ListItem } from "native-base";
+import { List, ListItem, Text } from "native-base";
 import Container from "./LoadingContainer";
 
 export default class InfiniteScroll extends PureComponent {
@@ -28,19 +28,23 @@ export default class InfiniteScroll extends PureComponent {
     const { data, isLoading } = this.state;
     return (
       <Container isLoading={isLoading}>
-        <List
-          dataArray={data}
-          renderRow={item => (
-            <ListItem
-              button
-              onPress={() => this.onItemPress(item)}
-              key={item.id}
-            >
-              {this.props.renderRow(item)}
-            </ListItem>
-          )}
-          onEndReached={this.getData}
-        />
+        {data.length > 0 ? (
+          <List
+            dataArray={data}
+            renderRow={item => (
+              <ListItem
+                button
+                onPress={() => this.onItemPress(item)}
+                key={item.id}
+              >
+                {this.props.renderRow(item)}
+              </ListItem>
+            )}
+            onEndReached={this.getData}
+          />
+        ) : (
+          <Text>No results found</Text>
+        )}
       </Container>
     );
   }

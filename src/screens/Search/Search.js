@@ -6,7 +6,7 @@ import { MoviesList, MovieDetails, PersonDetails } from "../Shared";
 export default StackNavigator({
   SearchScreen: {
     screen: SearchScreen,
-    navigationOptions: { header: null, title: "Search" }
+    navigationOptions: { title: "Search" }
   },
   MoviesList: {
     screen: MoviesList
