@@ -2,11 +2,17 @@ import ApiService from "./api.service";
 
 class MoviesService {
   request = async url => {
-    const blob = await fetch(url);
-    return blob.json();
+    try {
+      const blob = await fetch(url);
+      return blob.json();
+    } catch (e) {
+      console.log(e);
+    }
   };
   getAllGenres = () => this.request(ApiService.getAllGenresUrl());
-  getMoviesOfGenre = id => this.request(ApiService.getMoviesOfGenreUrl(id));
+  getMoviesOfGenre = (id, page) =>
+    this.request(ApiService.getMoviesOfGenreUrl(id, page));
+  getPoster = route => this.request(ApiService.getPosterUrl());
 }
 
 export default new MoviesService();

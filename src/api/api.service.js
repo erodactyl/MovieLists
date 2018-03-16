@@ -8,9 +8,10 @@ class ApiService {
     this.key = "197abcfcf30b69baab29196ca161b38f";
   }
   getOptionsFromObject = obj => {
-    return Object.keys(obj).reduce((acc, key) => {
-      acc += `&${key}=${obj[key]}`;
-    }, "");
+    return Object.keys(obj).reduce(
+      (acc, key) => `${acc}&${key}=${obj[key]}`,
+      ""
+    );
   };
   getUrl = (route, options = {}) => {
     const { protocol, host, version, key } = this;
@@ -20,14 +21,18 @@ class ApiService {
   getAllGenresUrl = () => {
     return this.getUrl("genre/movie/list");
   };
-  getMoviesOfGenreUrl = genreId => {
+  getMoviesOfGenreUrl = (genreId, page) => {
     return this.getUrl("discover/movie", {
       with_genres: genreId,
-      include_adult: false
+      include_adult: false,
+      page
     });
   };
   getMovieUrl = id => {
     return this.getUrl(`movie/${id}`);
+  };
+  getPosterUrl = route => {
+    return `${this.protocol}//image.tmdb.org/t/p/w500${route}`;
   };
 }
 
