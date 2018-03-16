@@ -1,14 +1,58 @@
 import React, { PureComponent } from "react";
-import { Container, Text, Button } from "native-base";
+import { List, ListItem, Text, Button, Content } from "native-base";
+import Container from "../../components/LoadingContainer";
 
 export default class PeoplesList extends PureComponent {
+  static navigationOptions = ({ navigation }) => {
+    const { name } = navigation.state.params;
+    return { title: name };
+  };
+  constructor(props) {
+    super(props);
+    this.isFetching = false;
+    this.page = 0;
+    this.state = {
+      isLoading: true,
+      people: []
+    };
+  }
+  componentWillMount() {
+    this.getPeople();
+  }
+  getPeople = async () => {
+    if (this.isFetching) return;
+    this.isFetching = true;
+    const people = await this.props.navigation.state.params.getPeople(
+      ++this.page
+    );
+    this.setState(
+      prevState => ({
+        people: [...prevState.people, ...people],
+        isLoading: false
+      }),
+      () => {
+        this.isFetching = false;
+      }
+    );
+  };
+  openPerson = person => {
+    this.props.navigation.navigate("PersonDetails", { person });
+  };
   render() {
+    const { people, isLoading } = this.state;
     return (
-      <Container>
-        <Text>Peoples List Screen</Text>
-        <Button onPress={() => this.props.navigation.navigate("PersonDetails")}>
-          <Text>Person details</Text>
-        </Button>
+      <Container isLoading={isLoading}>
+        <Content onScrollEndDrag={this.getPeople}>
+          {people.map(person => (
+            <ListItem
+              button
+              onPress={() => this.openPerson(person)}
+              key={person.id}
+            >
+              <Text>{person.name}</Text>
+            </ListItem>
+          ))}
+        </Content>
       </Container>
     );
   }

@@ -14,14 +14,12 @@ export default StackNavigator({
     screen: MoviesList
   },
   PeoplesList: {
-    screen: PeoplesList,
-    navigationOptions: { title: "Peoples List" }
+    screen: PeoplesList
   },
   MovieDetails: {
     screen: MovieDetails
   },
   PersonDetails: {
-    screen: PersonDetails,
-    navigationOptions: { title: "Person Details" }
+    screen: PersonDetails
   }
 });

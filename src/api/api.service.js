@@ -14,7 +14,9 @@ class ApiService {
   getUrl = (route, options = {}) => {
     const { protocol, host, version, key } = this;
     const op = this.getOptionsFromObject(options);
-    return `${protocol}//${host}/${version}/${route}?api_key=${key}${op}`;
+    return encodeURI(
+      `${protocol}//${host}/${version}/${route}?api_key=${key}${op}`
+    );
   };
   getAllGenresUrl = () => {
     return this.getUrl("genre/movie/list");
@@ -36,9 +38,10 @@ class ApiService {
     return this.getUrl(`movie/${id}`);
   };
   getMoviesSearchUrl = (query, page) => {
-    return encodeURI(
-      this.getUrl("search/movie", { query, include_adult: false, page })
-    );
+    return this.getUrl("search/movie", { query, include_adult: false, page });
+  };
+  getPeopleSearchUrl = (query, page) => {
+    return this.getUrl("search/person", { query, include_adult: false, page });
   };
 }
 

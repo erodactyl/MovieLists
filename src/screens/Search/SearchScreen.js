@@ -20,11 +20,22 @@ export default class SearchScreen extends PureComponent {
     const { results } = await MoviesService.getMoviesSearch(query, page);
     return results;
   };
+  getPeopleFromSearch = query => async page => {
+    const { results } = await MoviesService.getPeoplseSearch(query, page);
+    return results;
+  };
   searchMovies = () => {
     const { searchText } = this.state;
     this.props.navigation.navigate("MoviesList", {
       name: `Results for '${searchText}'`,
       getMovies: this.getMoviesFromSearch(searchText)
+    });
+  };
+  searchPeople = () => {
+    const { searchText } = this.state;
+    this.props.navigation.navigate("PeoplesList", {
+      name: `Results for '${searchText}'`,
+      getPeople: this.getPeopleFromSearch(searchText)
     });
   };
   render() {
@@ -38,7 +49,7 @@ export default class SearchScreen extends PureComponent {
           <Button onPress={this.searchMovies}>
             <Text>Search Movies</Text>
           </Button>
-          <Button>
+          <Button onPress={this.searchPeople}>
             <Text>Search People</Text>
           </Button>
         </Item>

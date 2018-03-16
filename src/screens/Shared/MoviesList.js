@@ -27,7 +27,6 @@ export default class MoviesList extends PureComponent {
   getMovies = async () => {
     if (this.isFetching) return;
     this.isFetching = true;
-    if (!this.state.movies.length) this.setState({ isLoading: true });
     const movies = await this.props.navigation.state.params.getMovies(
       ++this.page
     );
