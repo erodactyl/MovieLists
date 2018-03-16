@@ -8,9 +8,10 @@ export default class MovieDetails extends PureComponent {
     const { movie } = this.props;
     return (
       <Card>
-        <CardItem header>
+        <CardItem style={{ flexDirection: "column", alignItems: "flex-start" }}>
           <Text>{movie.title}</Text>
-          <Text note>{movie.genre}</Text>
+          <Text note>Release Date: {movie.release_date}</Text>
+          <Text note>Popularity: {movie.popularity}</Text>
         </CardItem>
         <CardItem>
           <Image

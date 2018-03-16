@@ -1,5 +1,3 @@
-// https://api.themoviedb.org/3/genre/movie/list?api_key=197abcfcf30b69baab29196ca161b38f
-
 class ApiService {
   constructor() {
     this.protocol = "https:";
