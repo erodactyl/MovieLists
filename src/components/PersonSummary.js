@@ -5,19 +5,20 @@ import ApiService from "../api/api.service";
 
 export default class MovieSummary extends PureComponent {
   render() {
-    const { person } = this.props;
+    const { person, asCast } = this.props;
     return (
       <Card>
         <CardItem header>
           <Body>
             <Text>{person.name}</Text>
-            <Text note>{person.popularity}</Text>
+            {asCast && <Text note>{person.character}</Text>}
+            {person.popularity && <Text note>{person.popularity}</Text>}
           </Body>
         </CardItem>
         {person.profile_path !== null && (
           <CardItem>
             <Image
-              style={{ height: 500, flex: 1 }}
+              style={{ height: 500, width: asCast ? 200 : null, flex: 1 }}
               source={{ uri: ApiService.getPosterUrl(person.profile_path) }}
             />
           </CardItem>

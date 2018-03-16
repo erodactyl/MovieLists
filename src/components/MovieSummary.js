@@ -1,11 +1,12 @@
 import React, { PureComponent, Fragment } from "react";
-import { Image } from "react-native";
-import { Card, CardItem, Text, Left, Body, ListItem } from "native-base";
+import { Image, FlatList, TouchableOpacity } from "react-native";
+import { Card, CardItem, Text, Left, Body, ListItem, List } from "native-base";
+import PersonSummary from "../components/PersonSummary";
 import ApiService from "../api/api.service";
 
 export default class MovieSummary extends PureComponent {
   render() {
-    const { movie, brief } = this.props;
+    const { movie, brief, full } = this.props;
     const overview =
       brief && movie.overview.length > 100
         ? `${movie.overview.substring(0, 100)}...`
@@ -15,7 +16,7 @@ export default class MovieSummary extends PureComponent {
         <CardItem header>
           <Body>
             <Text>{movie.title}</Text>
-            {this.props.full && (
+            {full && (
               <Text note>
                 {movie.genres
                   .reduce((acc, genre) => `${acc}, ${genre.name}`, "")
@@ -48,6 +49,23 @@ export default class MovieSummary extends PureComponent {
         <CardItem>
           <Text>{overview}</Text>
         </CardItem>
+        {full && (
+          <CardItem>
+            <List
+              dataArray={movie.cast}
+              renderRow={person => (
+                <TouchableOpacity
+                  button
+                  onPress={() => this.props.openPerson(person)}
+                  key={person.cast_id}
+                >
+                  <PersonSummary person={person} asCast />
+                </TouchableOpacity>
+              )}
+              horizontal
+            />
+          </CardItem>
+        )}
       </Card>
     );
   }

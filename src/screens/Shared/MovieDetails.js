@@ -16,16 +16,34 @@ export default class MovieDetails extends PureComponent {
       movie: props.navigation.state.params.movie
     };
   }
-  async componentWillMount() {
-    const movie = await MoviesService.getMovie(this.state.movie.id);
-    this.setState({ movie, fullyLoaded: true });
+  componentWillMount() {
+    this.getMoiveInfo();
   }
+  getMoiveInfo = async () => {
+    const { id } = this.state.movie;
+    const [movie, { cast }] = await Promise.all([
+      MoviesService.getMovie(id),
+      MoviesService.getMovieCredits(id)
+    ]);
+    const fullMovie = {
+      ...movie,
+      cast: cast.filter(person => person.profile_path !== null)
+    };
+    this.setState({ movie: fullMovie, fullyLoaded: true });
+  };
+  openCastPerson = person => {
+    this.props.navigation.navigate("PersonDetails", { person });
+  };
   render() {
     const { movie } = this.state;
     return (
       <Container>
         <Content>
-          <MovieSummary movie={movie} full={this.state.fullyLoaded} />
+          <MovieSummary
+            movie={movie}
+            full={this.state.fullyLoaded}
+            openPerson={this.openCastPerson}
+          />
         </Content>
       </Container>
     );

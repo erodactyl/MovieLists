@@ -17,7 +17,6 @@ export default class InfiniteScroll extends PureComponent {
   }
   getData = async () => {
     const data = await this.props.getData(++this.page);
-    console.log(data);
     this.setState(prevState => ({
       data: [...prevState.data, ...data],
       isLoading: false

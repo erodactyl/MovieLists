@@ -6,7 +6,7 @@ class MoviesService {
       const blob = await fetch(url);
       return blob.json();
     } catch (e) {
-      console.log(e);
+      console.warn(e);
     }
   };
   getAllGenres = () => this.request(ApiService.getAllGenresUrl());
@@ -18,6 +18,7 @@ class MoviesService {
   getPeoplseSearch = (query, page) =>
     this.request(ApiService.getPeopleSearchUrl(query, page));
   getPerson = id => this.request(ApiService.getPersonUrl(id));
+  getMovieCredits = id => this.request(ApiService.getMovieCreditsUrl(id));
 }
 
 export default new MoviesService();
