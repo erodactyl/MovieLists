@@ -14,21 +14,21 @@ export default class MovieSummary extends PureComponent {
         <CardItem header>
           <Body>
             <Text>{movie.title}</Text>
-            {full && (
+            {full ? (
               <Text note>
                 {movie.genres
                   .reduce((acc, genre) => `${acc}, ${genre.name}`, "")
                   .substring(2)}
               </Text>
-            )}
+            ) : null}
           </Body>
         </CardItem>
         <CardItem>
           <Body>
             <Text note>Release Date: {movie.release_date}</Text>
-            {movie.popularity && (
+            {movie.popularity ? (
               <Text note>Popularity: {movie.popularity}</Text>
-            )}
+            ) : null}
             {this.props.full && (
               <Fragment>
                 <Text note>Budget: {movie.budget}</Text>
@@ -38,15 +38,15 @@ export default class MovieSummary extends PureComponent {
             )}
           </Body>
         </CardItem>
-        {movie.poster_path !== null && (
+        {movie.poster_path ? (
           <CardItem>
             <Image
               style={[styles.image, { width: fromPerson ? 200 : null }]}
               source={{ uri: ApiService.getPosterUrl(movie.poster_path) }}
             />
           </CardItem>
-        )}
-        {!fromPerson && (
+        ) : null}
+        {!fromPerson ? (
           <CardItem>
             <Text>
               {brief && movie.overview.length > 100
@@ -54,8 +54,8 @@ export default class MovieSummary extends PureComponent {
                 : movie.overview}
             </Text>
           </CardItem>
-        )}
-        {full && (
+        ) : null}
+        {full ? (
           <CardItem>
             <List
               dataArray={movie.cast}
@@ -71,7 +71,7 @@ export default class MovieSummary extends PureComponent {
               horizontal
             />
           </CardItem>
-        )}
+        ) : null}
       </Card>
     );
   }

@@ -14,11 +14,11 @@ export default class PersonSummary extends PureComponent {
         <CardItem header>
           <Body>
             <Text>{person.name}</Text>
-            {asCast && <Text note>{person.character}</Text>}
-            {person.popularity && (
+            {asCast ? <Text note>{person.character}</Text> : null}
+            {person.popularity ? (
               <Text note>Popularity: {person.popularity}</Text>
-            )}
-            {full && (
+            ) : null}
+            {full ? (
               <Fragment>
                 {person.birthday && <Text note>Birth: {person.birthday}</Text>}
                 {person.deathday && <Text note>Death: {person.deathday}</Text>}
@@ -26,23 +26,23 @@ export default class PersonSummary extends PureComponent {
                   <Text note>Place of birth: {person.place_of_birth}</Text>
                 )}
               </Fragment>
-            )}
+            ) : null}
           </Body>
         </CardItem>
-        {person.profile_path && (
+        {person.profile_path ? (
           <CardItem>
             <Image
               style={[styles.image, { width: asCast ? 200 : null }]}
               source={{ uri: ApiService.getPosterUrl(person.profile_path) }}
             />
           </CardItem>
-        )}
-        {full && (
+        ) : null}
+        {full ? (
           <CardItem>
             <Text>{person.biography}</Text>
           </CardItem>
-        )}
-        {full && (
+        ) : null}
+        {full ? (
           <CardItem>
             <List
               dataArray={person.movies}
@@ -58,7 +58,7 @@ export default class PersonSummary extends PureComponent {
               horizontal
             />
           </CardItem>
-        )}
+        ) : null}
       </Card>
     );
   }
