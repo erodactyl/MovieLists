@@ -46,7 +46,7 @@ export default class MovieSummary extends PureComponent {
             />
           </CardItem>
         )}
-        {movie.overview && (
+        {!fromPerson && (
           <CardItem>
             <Text>
               {brief && movie.overview.length > 100
