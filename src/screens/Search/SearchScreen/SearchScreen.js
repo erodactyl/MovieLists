@@ -51,10 +51,10 @@ export default class SearchScreen extends PureComponent {
             />
           </Item>
           <View style={styles.searchButtons}>
-            <Button onPress={this.searchMovies}>
+            <Button style={styles.button} onPress={this.searchMovies}>
               <Text>Search Movies</Text>
             </Button>
-            <Button onPress={this.searchPeople}>
+            <Button style={styles.button} onPress={this.searchPeople}>
               <Text>Search People</Text>
             </Button>
           </View>
